@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// A function-type alias takes a stream as argument and returns void
@@ -64,9 +65,9 @@ class ICloudStorage {
   /// The returned future completes without waiting for the file to be uploaded
   /// to iCloud
   Future<void> startUpload({
-    required String filePath,
-    String? destinationFileName,
-    StreamHandler<double>? onProgress,
+    @required String filePath,
+    String destinationFileName,
+    StreamHandler<double> onProgress,
   }) async {
     if (filePath.trim().isEmpty) {
       throw InvalidArgumentException('invalid filePath');
@@ -109,9 +110,9 @@ class ICloudStorage {
   /// The returned future completes without waiting for the file to be
   /// downloaded
   Future<void> startDownload({
-    required String fileName,
-    required String destinationFilePath,
-    StreamHandler<double>? onProgress,
+    @required String fileName,
+    @required String destinationFilePath,
+    StreamHandler<double> onProgress,
   }) async {
     if (fileName.trim().isEmpty || fileName.contains('/')) {
       throw InvalidArgumentException('invalid fileName');
