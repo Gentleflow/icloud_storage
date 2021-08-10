@@ -26,6 +26,12 @@ class ICloudStorage {
     return _instance;
   }
 
+
+  // check iCloud permission
+  Future<bool> iCloudPermission() async {
+    return await _channel.invokeMethod('iCloudPermission');
+  }
+
   /// Lists files from the iCloud container directory, which lives on the device
   ///
   /// Returns a future completing with a list of file names
